@@ -5,6 +5,7 @@
 /RGBT_workspace/results*/
 /RGBT_workspace/ground_truth/
 /eval_*.py
+/export_vtuav_st_gt.py
 __pycache__/
 *.py[cod]
 *.log
