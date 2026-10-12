@@ -73,20 +73,7 @@ Other supported test datasets are GTOT, RGBT210, RGBT234, VTUAV-ST, and VTUAV-LT
 
 ## Pretrained Weights
 
-TSMTrack training is initialized with the **DropTrack pretrained checkpoint** named `DropTrack.pth.tar`. Place the checkpoint at:
-
-```text
-RGBT_workspace/PRETRAIN/DropTrack.pth.tar
-```
-
-Set `MODEL.PRETRAIN_FILE` in `experiments/tsmtrack/tsmtrack.yaml` to its absolute path:
-
-```yaml
-MODEL:
-  PRETRAIN_FILE: "/absolute/path/to/TSMTrack/RGBT_workspace/PRETRAIN/DropTrack.pth.tar"
-```
-
-The training code loads the pretrained network parameters from the checkpoint's `net` field to initialize TSMTrack. The DropTrack checkpoint is used only for initialization during training. Testing loads the TSMTrack checkpoints generated during training from `output/checkpoints/train/tsmtrack/tsmtrack/`.
+The pretrained weight is `DropTrack.pth.tar`. Set its path in `MODEL.PRETRAIN_FILE` in `experiments/tsmtrack/tsmtrack.yaml`.
 
 ## Training
 
@@ -96,8 +83,6 @@ Generate the local path files and check that the LasHeR training root is correct
 python tracking/create_default_local_file.py \
   --workspace_dir . --data_dir ./data --save_dir ./output
 ```
-
-Confirm that `MODEL.PRETRAIN_FILE` points to the DropTrack checkpoint described above. The same YAML selects `LasHeR_train` and `LasHeR_val` and enables temporal attention with a sparse keep ratio of `0.75`.
 
 ```bash
 bash train.sh
